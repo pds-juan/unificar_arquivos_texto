@@ -17,3 +17,10 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
         if nome_arquivo.lower().endswith('.ret'):
             # salva o caminho do arquivo de entrada
             caminho_arquivo = os.path.join(arquivos_entrada, nome_arquivo)
+
+            # abre o arquivo de entrada
+            with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+                # salva o conteúdo do arquivo lido
+                conteudo = arquivo.read()
+                # escreve o conteúdo no arquivo de saída
+                saida.write(conteudo)
