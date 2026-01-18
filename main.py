@@ -1,3 +1,7 @@
+import os
+
+## também funciona para arquivos TXT
+## apenas trocar as menções da extensão .ret/.RET para .txt
 
 # caminho da pasta onde estão os arquivos de entrada
 arquivos_entrada = './input'
@@ -7,4 +11,9 @@ arquivo_saida = 'arquivo_unificado.RET'
 
 # abre ou cria, caso não exista, o arquivo de saída para escrita
 with open(arquivo_saida, 'w', encoding='utf-8') as saida:
-    pass
+    # para cada arquivo na pasta, percorrendo em ordem alfabética
+    for nome_arquivo in sorted(os.listdir(arquivos_entrada)):
+        # se o arquivo contiver a extensão .ret
+        if nome_arquivo.lower().endswith('.ret'):
+            # salva o caminho do arquivo de entrada
+            caminho_arquivo = os.path.join(arquivos_entrada, nome_arquivo)
