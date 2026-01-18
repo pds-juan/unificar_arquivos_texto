@@ -24,3 +24,8 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
                 conteudo = arquivo.read()
                 # escreve o conteúdo no arquivo de saída
                 saida.write(conteudo)
+
+            # quebra de linha entre o conteúdo de cada arquivo de entrada
+            saida.write('\n\n')
+
+print('Arquivos .RET unificados com sucesso!')
