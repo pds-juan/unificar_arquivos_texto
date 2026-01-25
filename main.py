@@ -9,6 +9,8 @@ arquivos_entrada = './input'
 # nome do arquivo de saída
 arquivo_saida = 'arquivo_unificado.RET'
 
+contador = 0
+
 # abre ou cria, caso não exista, o arquivo de saída para escrita
 with open(arquivo_saida, 'w', encoding='utf-8') as saida:
     # para cada arquivo na pasta, percorrendo em ordem alfabética
@@ -28,4 +30,8 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
             # quebra de linha entre o conteúdo de cada arquivo de entrada
             saida.write('\n\n')
 
-print('Arquivos .RET unificados com sucesso!')
+            contador += 1
+
+print(f'\nArquivos .RET unificados com sucesso!')
+
+print(f'\nTotal de arquivos lidos: {contador}.')
