@@ -20,17 +20,22 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
             # salva o caminho do arquivo de entrada
             caminho_arquivo = os.path.join(arquivos_entrada, nome_arquivo)
 
-            # abre o arquivo de entrada
-            with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
-                # salva o conteúdo do arquivo lido
-                conteudo = arquivo.read()
-                # escreve o conteúdo no arquivo de saída
-                saida.write(conteudo)
+            try:
+                # abre o arquivo de entrada
+                with open(caminho_arquivo, 'r', encoding='utf-8') as arquivo:
+                    # salva o conteúdo do arquivo lido
+                    conteudo = arquivo.read()
+                    # escreve o conteúdo no arquivo de saída
+                    saida.write(conteudo)
 
-            # quebra de linha entre o conteúdo de cada arquivo de entrada
-            saida.write('\n\n')
+                # quebra de linha entre o conteúdo de cada arquivo de entrada
+                saida.write('\n\n')
 
-            contador += 1
+                contador += 1
+                print(f'✔ Arquivo lido com sucesso: {nome_arquivo}')
+
+            except Exception as e:
+                print(f'✖ Erro ao ler o arquivo {nome_arquivo}: {e}')
 
 print(f'\nArquivos .RET unificados com sucesso!')
 
