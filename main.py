@@ -45,9 +45,13 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
                 contador += 1
                 print(f'✔ Arquivo lido com sucesso: {nome_arquivo}')
 
+                # movendo arquivo lido para a pasta backup
+                shutil.copy2(caminho_arquivo, pasta_backup)
+                os.remove(caminho_arquivo)
+
             except Exception as e:
                 print(f'✖ Erro ao ler o arquivo {nome_arquivo}: {e}')
 
-print(f'\nArquivos .RET unificados com sucesso!')
+print('\nArquivos .RET unificados com sucesso!')
 
 print(f'\nTotal de arquivos lidos: {contador}.')
