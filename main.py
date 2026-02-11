@@ -21,6 +21,7 @@ for pasta in [pasta_output, pasta_backup]:
 arquivo_saida = f'{pasta_output}/arquivo_unificado.RET'
 
 contador = 0
+erros = 0
 
 # abre ou cria, caso não exista, o arquivo de saída para escrita
 with open(arquivo_saida, 'w', encoding='utf-8') as saida:
@@ -50,8 +51,16 @@ with open(arquivo_saida, 'w', encoding='utf-8') as saida:
                 os.remove(caminho_arquivo)
 
             except Exception as e:
+                # aumenta o contador de erros
+                erros += 1
                 print(f'✖ Erro ao ler o arquivo {nome_arquivo}: {e}')
 
 print('\nArquivos .RET unificados com sucesso!')
+
+# informa o número de arquivos não lidos por erro
+if erros == 1:
+    print(f'\nPorém {erros} arquivo não lido por erro continua na pasta input.')
+elif erros != 0:
+    print(f'\nPorém {erros} arquivos não lidos por erro continuam na pasta input.')
 
 print(f'\nTotal de arquivos lidos: {contador}.')
